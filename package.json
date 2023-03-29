@@ -1,0 +1,21 @@
+{
+    "name": "udemy-playwright",
+    "version": "1.0.0",
+    "description": "Udemy Automated Software Testing with Playwright",
+    "main": "index.js",
+    "scripts": {
+        "tests:chrome": "playwright test --config=playwright.config.ts --project=Chromium",
+        "tests:firefox": "playwright test --config=playwright.config.ts --project=Firefox",
+        "tests:webkit": "playwright test --config=playwright.config.ts --project=Webkit"
+    },
+    "keywords": [
+        "Automation",
+        "Typescript"
+    ],
+    "author": "Adam Golec",
+    "license": "ISC",
+    "dependencies": {
+        "@playwright/test": "^1.32.0",
+        "prettier": "^2.8.6"
+    }
+}
