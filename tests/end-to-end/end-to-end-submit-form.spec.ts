@@ -20,4 +20,12 @@ test.describe('Feedback Form', () => {
         await expect(commentInput).toBeEmpty()
     })
     //Submit.
+    test('submit feedback form', async ({ page }) => {
+        await page.type('#name', 'some name')
+        await page.type('#email', 'some email@email.com')
+        await page.type('#subject', 'some subject')
+        await page.type('#comment', 'some comment')
+        await page.click("input[type='submit']")
+        await page.waitForSelector('#feedback-title')
+    })
 })
