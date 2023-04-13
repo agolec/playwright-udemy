@@ -1,10 +1,13 @@
 import { test, expect } from '@playwright/test'
+import { LoginPage } from '../../page_objects/LoginPage'
 
 test.describe('login/logout flow', () => {
     //Before Hook
+    let loginPage: LoginPage
 
     test.beforeEach(async ({ page }) => {
-        await page.goto('http://zero.webappsecurity.com/')
+        loginPage = new LoginPage(page)
+        await loginPage.visit()
     })
     //Negative Scenario.
     test('Negative scenario for login', async ({ page }) => {
@@ -37,5 +40,4 @@ test.describe('login/logout flow', () => {
             'http://zero.webappsecurity.com/index.html'
         )
     })
-    //Positive Scenario + Logout
 })
