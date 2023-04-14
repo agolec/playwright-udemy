@@ -1,33 +1,28 @@
 import { test, expect } from '@playwright/test'
+import { LoginPage } from '../../page_objects/LoginPage'
+import { HomePage } from '../../page_objects/HomePage'
 
-test.describe('login/logout flow', () => {
+test.describe.only('login/logout flow', () => {
     //Before Hook
+    let loginPage: LoginPage
+    let homePage: HomePage
 
     test.beforeEach(async ({ page }) => {
-        await page.goto('http://zero.webappsecurity.com/')
+        loginPage = new LoginPage(page)
+        homePage = new HomePage(page)
+        await homePage.visit()
     })
     //Negative Scenario.
-    test('Negative scenario for login', async ({ page }) => {
-        await page.click('#signin_button')
-        await page.type('#user_login', 'invalid username')
-        await page.type('#user_password', 'invalid password')
-        await page.click('text=Sign In')
-
-        const errorMessage = page.locator('.alert-error')
-        await expect(errorMessage).toContainText(
-            'Login and/or password are wrong.'
-        )
+    test.only('Negative scenario for login', async ({ page }) => {
+        await homePage.clickSignIn()
+        await loginPage.login('invalid username', 'invalidPassword')
+        await loginPage.assertErrorMessage()
     })
     //Positive Scenario login + logout.
-    test('Positive scenario for login + logout', async ({ page }) => {
-        await page.click('#signin_button')
-        await page.type('#user_login', 'username')
-        await page.type('#user_password', 'password')
-        await page.click('text=Sign In')
-
-        await page.goto(
-            'http://zero.webappsecurity.com/bank/account-activity.html'
-        )
+    test.only('Positive scenario for login + logout', async ({ page }) => {
+        await homePage.clickSignIn()
+        await loginPage.login('username', 'password')
+        await loginPage.navigateToAccountOverview()
 
         const acctSummaryTab = await page.locator('#account_summary_tab')
         await expect(acctSummaryTab).toBeVisible()
@@ -37,5 +32,4 @@ test.describe('login/logout flow', () => {
             'http://zero.webappsecurity.com/index.html'
         )
     })
-    //Positive Scenario + Logout
 })
