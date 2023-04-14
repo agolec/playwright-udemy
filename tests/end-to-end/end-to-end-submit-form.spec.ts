@@ -1,4 +1,6 @@
 import { test, expect } from '@playwright/test'
+import { HomePage } from '../../page_objects/HomePage'
+import { FeedbackPage } from '../../page_objects/FeedbackPage'
 
 test.describe('Feedback Form', () => {
     test.beforeEach(async ({ page }) => {
