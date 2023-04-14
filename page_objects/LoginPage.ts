@@ -17,9 +17,10 @@ export class LoginPage {
         this.errorMessage = page.locator('.alert-error')
     }
     //Define LoginPage methods.
-
-    async visit() {
-        await this.page.goto('http://zero.webappsecurity.com/')
+    async navigateToAccountOverview() {
+        await this.page.goto(
+            'http://zero.webappsecurity.com/bank/account-activity.html'
+        )
     }
     async login(username: string, password: string) {
         await this.usernameInput.type(username)
