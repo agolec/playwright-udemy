@@ -1,10 +1,12 @@
 import { test, expect } from '@playwright/test'
 import { HomePage } from '../../page_objects/HomePage'
 import { LoginPage } from '../../page_objects/LoginPage'
+import { PaymentPage } from '../../page_objects/PaymentPage'
 
 test.describe('New Payment', () => {
     let homePage: HomePage
     let loginPage: LoginPage
+    let paymentPage: PaymentPage
 
     test.beforeEach(async ({ page }) => {
         // await page.goto('http://zero.webappsecurity.com/index.html')
@@ -35,10 +37,13 @@ test.describe('New Payment', () => {
         // await page.type('#sp_description', 'some text')
         // await page.click('input#pay_saved_payees')
 
-        const message = await page.locator('#alert_content span')
-        await expect(message).toBeVisible()
-        await expect(message).toContainText(
-            'The payment was successfully submitted.'
-        )
+        // const message = await page.locator('#alert_content span')
+        // await expect(message).toBeVisible()
+        // await expect(message).toContainText(
+        //     'The payment was successfully submitted.'
+        // )
+
+        paymentPage.createPayment()
+        paymentPage.assertSuccessMessage()
     })
 })
