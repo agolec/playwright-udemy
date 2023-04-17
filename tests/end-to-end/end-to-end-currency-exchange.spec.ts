@@ -1,12 +1,18 @@
 import { test, expect } from '@playwright/test'
+import { HomePage } from '../../page_objects/HomePage'
+import { LoginPage } from '../../page_objects/LoginPage'
 
-test.describe('Currency Exchange', () => {
+test.describe.only('Currency Exchange', () => {
+    let homePage: HomePage
+    let loginPage: LoginPage
+
     test.beforeEach(async ({ page }) => {
-        await page.goto('http://zero.webappsecurity.com/index.html')
-        await page.click('#signin_button')
-        await page.type('#user_login', 'username')
-        await page.type('#user_password', 'password')
-        await page.click('text=Sign in')
+        homePage = new HomePage(page)
+        loginPage = new LoginPage(page)
+
+        await homePage.visit()
+        await homePage.clickSignIn()
+        await loginPage.login('username', 'password')
     })
 
     test('Should convert USD', async ({ page }) => {
