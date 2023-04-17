@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test'
 import { LoginPage } from '../../page_objects/LoginPage'
 import { HomePage } from '../../page_objects/HomePage'
 
-test.describe.only('login/logout flow', () => {
+test.describe('login/logout flow', () => {
     //Before Hook
     let loginPage: LoginPage
     let homePage: HomePage
@@ -13,13 +13,13 @@ test.describe.only('login/logout flow', () => {
         await homePage.visit()
     })
     //Negative Scenario.
-    test.only('Negative scenario for login', async ({ page }) => {
+    test('Negative scenario for login', async ({ page }) => {
         await homePage.clickSignIn()
         await loginPage.login('invalid username', 'invalidPassword')
         await loginPage.assertErrorMessage()
     })
     //Positive Scenario login + logout.
-    test.only('Positive scenario for login + logout', async ({ page }) => {
+    test('Positive scenario for login + logout', async ({ page }) => {
         await homePage.clickSignIn()
         await loginPage.login('username', 'password')
         await loginPage.navigateToAccountOverview()
