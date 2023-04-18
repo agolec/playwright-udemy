@@ -19,6 +19,7 @@ export class FeedbackPage {
         this.clearButton = page.locator("input[name='clear']")
         this.submitButton = page.locator("input[name='submit']")
         this.feedbackTitle = page.locator('#feedback-title')
+        //comment
     }
 
     async fillForm(
