@@ -21,7 +21,6 @@ export class Navbar {
         this.payBills = page.locator('#pay_bills_tab')
         this.myMoneyApp = page.locator('#money_map_tab')
         this.onlineStatement = page.locator('#online_statements_tab')
-        //comment
     }
 
     async clickOnTab(tabName: string) {
