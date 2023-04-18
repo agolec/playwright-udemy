@@ -27,7 +27,6 @@ test.describe.only('New Payment', () => {
         )
 
         await navbar.clickOnTab('Pay Bills')
-
         await paymentPage.createPayment()
         await paymentPage.assertSuccessMessage()
     })
