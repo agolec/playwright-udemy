@@ -29,7 +29,7 @@ test.describe('Feedback Form', () => {
             'name',
             'email@email.com',
             'subject',
-            'some message lmao'
+            'some message'
         )
         await feedbackPage.assertFeedbackFormSent()
     })
