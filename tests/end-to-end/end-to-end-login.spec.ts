@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test'
 import { LoginPage } from '../../page_objects/LoginPage'
 import { HomePage } from '../../page_objects/HomePage'
 
-test.describe('login/logout flow', () => {
+test.describe.parallel.only('login/logout flow', () => {
     //Before Hook
     let loginPage: LoginPage
     let homePage: HomePage
@@ -16,6 +16,7 @@ test.describe('login/logout flow', () => {
     test('Negative scenario for login', async ({ page }) => {
         await homePage.clickSignIn()
         await loginPage.login('invalid username', 'invalidPassword')
+        await loginPage.wait(3000)
         await loginPage.assertErrorMessage()
     })
     //Positive Scenario login + logout.
