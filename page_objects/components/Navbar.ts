@@ -1,4 +1,4 @@
-import { expect, Locator, Page } from '@playwright/test'
+import { Locator, Page } from '@playwright/test'
 
 //Within page object model architecture, you will have pages, and components.
 //Components should be placed in their own folder in the page object folder.
