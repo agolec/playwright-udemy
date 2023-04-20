@@ -13,4 +13,11 @@ test.describe('Login Page Visual Tests', () => {
         await homePage.visit()
         await homePage.clickSignIn()
     })
+    test('Login Form', async ({ page }) => {
+        await loginPage.snapshotLoginForm()
+    })
+    test('Login error message', async ({ page }) => {
+        await loginPage.login('failed', 'password is wrong')
+        await loginPage.snapshotErrorMessage()
+    })
 })
