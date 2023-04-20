@@ -35,4 +35,14 @@ export class LoginPage extends AbstractPage {
             'Login and/or password are wrong.'
         )
     }
+    async snapshotLoginForm() {
+        await expect(this.loginForm.screenshot).toMatchSnapshot(
+            'login-form.png'
+        )
+    }
+    async snapshotErrorMessage() {
+        await expect(this.errorMessage.screenshot).toMatchSnapshot(
+            'login-error.png'
+        )
+    }
 }
