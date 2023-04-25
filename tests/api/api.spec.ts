@@ -18,4 +18,14 @@ test.describe.parallel('API Testing', () => {
         const response = await request.get(`${rootURL}/users/non-existant-user`)
         expect(response.status()).toBe(NOT_FOUND)
     })
+
+    test.only('Simple API Test - Get User Detail', async ({ request }) => {
+        const response = await request.get(`${rootURL}/users/1`)
+        const responseBody = JSON.parse(await response.text())
+        expect(response.status()).toBe(200)
+        expect(responseBody.data.id).toBe(1)
+        expect(responseBody.data.first_name).toContain('George')
+        expect(responseBody.data.last_name).toContain('Bluth')
+        expect(responseBody.data.email).toBeTruthy()
+    })
 })
