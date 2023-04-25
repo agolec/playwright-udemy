@@ -10,6 +10,8 @@ test.describe.parallel('API Testing', () => {
     test('Simple API Test - Assert Response Status', async ({ request }) => {
         const response = await request.get(`${rootURL}/users/2`)
         expect(response.status()).toBe(GOOD)
+        const responseBody = JSON.parse(await response.text())
+        console.log(responseBody)
     })
 
     test('Simple API Test - Assert Invalid Endpoint', async ({ request }) => {
