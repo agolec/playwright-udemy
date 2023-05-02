@@ -24,3 +24,10 @@ To Run Tests:
 
     For end to end flow regression testing: run the commands in the package.json scripts section beginning with 'tests:e2e'
         These tests will use the config info found in the file 'end-to-end.config.ts'.
+
+To change screenshots when the CCS/HTML/presentation of a site has changed compared to existing screenshots/visual tests
+    run the following command in the terminal, or set one up in the package.json file: 
+
+    "playwright test --config=visual.config.ts --project=chromium --update=snapshots"
+
+    the --update=snapshots tag will update any screenshots used to make comparison against the current state of the site.
