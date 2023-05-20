@@ -1,0 +1,4 @@
+Sites to use
+reqres.in - A live realtime APi service. Free to use.
+
+Gives real response info and doesn't require registration.
