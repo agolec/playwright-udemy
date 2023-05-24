@@ -1,0 +1,50 @@
+Sites to use
+reqres.in - A live realtime APi service. Free to use.
+
+Gives real response info and doesn't require registration.
+
+Best Practices:
+
+Put your base URL into it's own variable because you will refer back to it a LOT.
+
+------------
+
+How to Perform API validations
+
+1) Assert the response you received is the correct one.
+
+Ex: if you expect 404 or 200, perform an assert on the status.
+
+practical example: 
+
+const response = await request.get(`${baseURL}/users/2`)
+        expect(response.status()).toBe(GOOD)
+
+2) Parsing Response JSON data, and validate contents.
+
+            How to parse.
+
+1- create a variable like  responseBody, and 
+2- use JSON.parse on it.
+
+ex: 
+
+        const responseBody = JSON.parse(await response.text())
+        console.log(responseBody)
+
+    the console.log will output the following:
+
+    {
+        data: {
+            id: 2,
+            email: 'janet.weaver@reqres.in',
+            first_name: 'Janet',
+            last_name: 'Weaver',
+            avatar: 'https://reqres.in/img/faces/2-image.jpg'
+        },
+        support: {
+            url: 'https://reqres.in/#support-heading',
+            text: 'To keep ReqRes free, contributions towards server costs are appreciated!'
+        }
+    }
+
