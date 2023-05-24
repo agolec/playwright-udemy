@@ -1,5 +1,4 @@
 import { test, expect } from '@playwright/test'
-import { GOOD, NOT_FOUND } from '../api/status.codes'
 import { baseURL } from '../api/base.url'
 
 //setting up a test suite that runs api calls in parallel.
@@ -10,17 +9,17 @@ test.describe.parallel('API Testing', () => {
 
     test('Simple API Test - Assert Response Status', async ({ request }) => {
         const response = await request.get(`${baseURL}/users/2`)
-        expect(response.status()).toBe(GOOD)
+        expect(response.status()).toBe(200)
         const responseBody = JSON.parse(await response.text())
         console.log(responseBody)
     })
 
     test('Simple API Test - Assert Invalid Endpoint', async ({ request }) => {
         const response = await request.get(`${baseURL}/users/non-existant-user`)
-        expect(response.status()).toBe(NOT_FOUND)
+        expect(response.status()).toBe(404)
     })
 
-    test('Simple API Test - Get User Detail', async ({ request }) => {
+    test.only('Simple API Test - Get User Detail', async ({ request }) => {
         const response = await request.get(`${baseURL}/users/1`)
         const responseBody = JSON.parse(await response.text())
         expect(response.status()).toBe(200)
