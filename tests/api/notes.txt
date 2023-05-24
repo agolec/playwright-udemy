@@ -48,3 +48,16 @@ ex:
         }
     }
 
+----------
+Testing for ANY kind of content in a field:
+
+In some of our fields, we will want to check for specific values.
+That will be in the form like the below:
+
+    expect(responseBody.data.first_name).toBe('George')
+
+If we have a field we want to check for any value, and do not care what that value is,
+we can use .toBeTruthy().
+
+ex:
+        expect(responseBody.data.email).toBeTruthy()
