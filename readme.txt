@@ -40,3 +40,11 @@ of the directory name.
 your config files specify information about the test you wish to run. The script you choose to run in
 your package.json file will be a config.ts file. From there, your config.js file will specify which
 directory contains your spec file you are going to run.
+
+To change screenshots when the CCS/HTML/presentation of a site has changed compared to existing screenshots/visual tests
+    run the following command in the terminal, or set one up in the package.json file: 
+
+    "playwright test --config=visual.config.ts --project=chromium --update=snapshots"
+
+    the --update=snapshots tag will update any screenshots used to make comparison against the current state of the site.
+
