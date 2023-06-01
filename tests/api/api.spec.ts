@@ -20,7 +20,7 @@ test.describe.parallel('API Testing', () => {
         expect(response.status()).toBe(404)
     })
 
-    test.only('Simple API Test - Get User Detail', async ({ request }) => {
+    test('Simple API Test - Get User Detail', async ({ request }) => {
         const response = await request.get(`${baseURL}/users/1`)
         const responseBody = JSON.parse(await response.text())
         expect(response.status()).toBe(200)
@@ -28,5 +28,16 @@ test.describe.parallel('API Testing', () => {
         expect(responseBody.data.first_name).toBe('George')
         expect(responseBody.data.last_name).toBe('Bluth')
         expect(responseBody.data.email).toBeTruthy()
+    })
+    test.only('POST Request - Create New User', async ({ request }) => {
+        const ID = 1000
+        const response = await request.post(`${baseURL}/users`, {
+            data: {
+                id: ID,
+            },
+        })
+        const responseBody = JSON.parse(await response.text())
+        expect(responseBody.id).toBe(ID)
+        expect(responseBody.createdAt).toBeTruthy()
     })
 })
