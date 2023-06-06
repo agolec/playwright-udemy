@@ -7,6 +7,7 @@ test.describe.parallel('API Testing', () => {
     //set up the root url our APIs will use.
     //const baseURL = 'https://reqres.in/api'
 
+    //GET test
     test('Simple API Test - Assert Response Status', async ({ request }) => {
         const response = await request.get(`${baseURL}/users/2`)
         expect(response.status()).toBe(200)
@@ -15,7 +16,9 @@ test.describe.parallel('API Testing', () => {
         console.log(responseBody)
     })
 
-    test('Simple API Test - Assert Invalid Endpoint', async ({ request }) => {
+    test('Simple API Test - GET User - Assert Invalid Endpoint', async ({
+        request,
+    }) => {
         const response = await request.get(`${baseURL}/users/non-existant-user`)
         expect(response.status()).toBe(404)
     })
@@ -29,6 +32,8 @@ test.describe.parallel('API Testing', () => {
         expect(responseBody.data.last_name).toBe('Bluth')
         expect(responseBody.data.email).toBeTruthy()
     })
+
+    //POST
     test('POST Request - Create New User', async ({ request }) => {
         const ID = 1000
         const response = await request.post(`${baseURL}/users`, {
@@ -55,7 +60,7 @@ test.describe.parallel('API Testing', () => {
         expect(responseBody.token).toBeTruthy()
     })
 
-    test.only('POST Request - Login FAIL: Wrong Email Address', async ({
+    test('POST Request - Login FAIL: Wrong Email Address', async ({
         request,
     }) => {
         const response = await request.post(`${baseURL}/login`, {
@@ -68,16 +73,29 @@ test.describe.parallel('API Testing', () => {
         expect(responseBody.error).toBeTruthy()
     })
 
-    test.only('POST Request - Login Fail - Invalid Password', async ({
+    test('POST Request - Register Fail - Missing Password', async ({
         request,
     }) => {
-        const response = await request.post(`${baseURL}/login`, {
+        const response = await request.post(`${baseURL}/register`, {
             data: {
-                email: 'eve.holt@reqres.in',
+                email: 'sydney@brosnan',
             },
         })
         const responseBody = JSON.parse(await response.text())
         expect(response.status()).toBe(400)
-        expect(responseBody.error).toBeTruthy()
+        expect(responseBody.error).toBe('Missing password')
+    })
+
+    test.only('POST Request - Register Fail - Missing Email', async ({
+        request,
+    }) => {
+        const response = await request.post(`${baseURL}/register`, {
+            data: {
+                password: 'sydney@brosnan',
+            },
+        })
+        const responseBody = JSON.parse(await response.text())
+        expect(response.status()).toBe(400)
+        expect(responseBody.error).toBe('Missing email or username')
     })
 })
