@@ -86,7 +86,7 @@ test.describe.parallel('API Testing', () => {
         expect(responseBody.error).toBe('Missing password')
     })
 
-    test.only('POST Request - Register Fail - Missing Email', async ({
+    test('POST Request - Register Fail - Missing Email', async ({
         request,
     }) => {
         const response = await request.post(`${baseURL}/register`, {
@@ -97,5 +97,31 @@ test.describe.parallel('API Testing', () => {
         const responseBody = JSON.parse(await response.text())
         expect(response.status()).toBe(400)
         expect(responseBody.error).toBe('Missing email or username')
+    })
+
+    //PUT
+    test('POST Request - Register Fail - Update User', async ({
+        request,
+    }) => {
+        const user_id = 2
+        const data_name = 'Morpheus'
+        const data_job = 'Nebuchanezzar captain'
+        const response = await request.put(`${baseURL}/users/${user_id}`, {
+            data: {
+                name: data_name,
+                job: data_job
+            },
+        })
+        const responseBody = JSON.parse(await response.text())
+        expect(response.status()).toBe(200)
+        expect(responseBody.name).toBe(data_name)
+        expect(responseBody.job).toBe(data_job)
+        expect(responseBody.updatedAt).toBeTruthy()
+    })
+    
+    //DELETE
+    test('DELETE Request - Delete User', async({request,}) => {
+        const response = await request.delete(`${baseURL}/users/2`)
+        expect(response.status()).toBe(204)
     })
 })
