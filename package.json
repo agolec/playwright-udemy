@@ -14,7 +14,8 @@
         "tests:visual:firefox:update": "playwright test --config=visual.config.ts --project=FireFox --update=snapshots",
         "tests:visual:chromium:update": "playwright test --config=visual.config.ts --project=Chromium --update=snapshots",
         "tests:visual:webkit:update": "playwright test --config=visual.config.ts --project=Webkit --update=snapshots",
-        "tests:api": "playwright test --config=api.config.ts --project=Chromium"
+        "tests:api": "playwright test --config=api.config.ts --project=Chromium",
+        "jenkins-server": "java -jar jenkins.war --httpPort=8080 --enable-future-java"
     },
     "keywords": [
         "Automation",
