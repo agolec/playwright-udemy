@@ -15,10 +15,12 @@ test.describe("Tips & Tricks Section", () => {
     })
 
     //indicates a problem with test code. Not the application itself.
-    test("Test FixMe Annotation", async ({page, browserName}) =>{
+    test.only("Test FixMe Annotation", async ({page, browserName}) =>{
         //use test.skip to skip a test on a certain browser.
-        test.fixme(browserName === 'chromium', 'test is not stable. Needs revision at a later sprint')
-        await page.goto('https://www.example.com')
+        //test.fixme(browserName === 'chromium', 'test is not stable. Needs revision at a later sprint')
+        await page.goto('https/www.eample.com')
+        //in order to retry a failing test, you add --retries=4 or something to your commands and flags to run the test
+        // npx playwright test --config=playwright.config.ts --project=Chromium --retries=4
     })
 })
 
