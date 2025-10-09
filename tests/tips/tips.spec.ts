@@ -56,4 +56,6 @@ test.describe('Tips & Tricks Section', () => {
     await page3.goto('https://www.example.com');
     await page1.waitForTimeout(4000);
   });
+  //for device emulation you can specify an environment in playwright when you use the terminal.
+  //npx playwright open --device="Nexus 7" wikipedia.org
 });
