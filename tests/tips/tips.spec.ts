@@ -1,11 +1,14 @@
 import { test, expect } from '@playwright/test';
+import { getRandomNumber } from '../../utils/data-helpers';
 
 //testInfo will tell you a lot of information about the test you are running. It will give
 //you access to a lot of different pieces of information inside of it.
 test.describe('Tips & Tricks Section', () => {
   test('TestInfo Object', async ({ page }, testInfo) => {
     await page.goto('https://www.example.com');
-    console.log(testInfo.expectedStatus);
+    //console.log(testInfo.expectedStatus);
+    let newNumber = await getRandomNumber();
+    console.log(newNumber);
   });
 
   test('Test Skip Browser', async ({ page, browserName }) => {
