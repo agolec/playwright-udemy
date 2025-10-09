@@ -30,7 +30,7 @@ test.describe('Tips & Tricks Section', () => {
   const people = ['Mike', 'Judy', 'Peter', 'Eli', 'Alice'];
 
   for (const name of people) {
-    test.only(`running test for ${name}`, async ({ page }) => {
+    test(`running test for ${name}`, async ({ page }) => {
       await page.goto('http://zero.webappsecurity.com/index.html');
       await page.type('#searchTerm', `${name}`);
       await page.waitForTimeout(3000);
@@ -43,5 +43,17 @@ test.describe('Tips & Tricks Section', () => {
     await page.mouse.down();
     await page.mouse.move(0, 100);
     await page.mouse.up();
+  });
+
+  test('Multiple browser tabs inside one browser', async ({ browser }) => {
+    const context = await browser.newContext(); //creates a new browser.
+    const page1 = await context.newPage();
+    const page2 = await context.newPage();
+    const page3 = await context.newPage();
+
+    await page1.goto('https://www.example.com');
+    await page2.goto('https://www.example.com');
+    await page3.goto('https://www.example.com');
+    await page1.waitForTimeout(4000);
   });
 });
