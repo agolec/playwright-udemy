@@ -58,4 +58,7 @@ test.describe('Tips & Tricks Section', () => {
   });
   //for device emulation you can specify an environment in playwright when you use the terminal.
   //npx playwright open --device="Nexus 7" wikipedia.org
+
+  //generating custom screenshots
+  //npx playwright screenshot --device="iPhone 11" --color-scheme=dark --wait-for-timeout=3000 x.com twitter-iphone.image.png
 });
