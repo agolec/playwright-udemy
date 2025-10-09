@@ -60,5 +60,8 @@ test.describe('Tips & Tricks Section', () => {
   //npx playwright open --device="Nexus 7" wikipedia.org
 
   //generating custom screenshots
-  //npx playwright screenshot --device="iPhone 11" --color-scheme=dark --wait-for-timeout=3000 x.com twitter-iphone.image.png
+  //npx playwright screenshot --device="iPhone 11" --color-scheme=dark --wait-for-timeout=3000 x.com twitter-iphone-image.png
+
+  //emulating browser language and timezone
+  //npx playwright open --timezone="Europe/Rome" --lang="it-IT" google.com
 });
