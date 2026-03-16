@@ -7,6 +7,7 @@ export class LoginPage extends AbstractPage {
   private readonly loginButton: Locator;
   private readonly acceptedNamesText: Locator;
   private readonly passwordForAllUsersTxt: Locator;
+  private readonly errorText: Locator;
 
   constructor(page: Page) {
     super(page);
@@ -15,6 +16,7 @@ export class LoginPage extends AbstractPage {
     this.loginButton = page.locator('#login-button');
     this.acceptedNamesText = page.locator('#login_credentials');
     this.passwordForAllUsersTxt = page.locator('.login_password');
+    this.errorText = page.locator('.error-message-container');
   }
   async goTo() {
     await this.page.goto('https://www.saucedemo.com/');
@@ -28,6 +30,9 @@ export class LoginPage extends AbstractPage {
     await this.userName.click();
     await this.userName.type(username);
   }
+  async enterUsername(username: string) {
+    await this.typeUsername(username);
+  }
   async typePassword(password: string) {
     await this.password.click();
     await this.password.type(password);
@@ -37,5 +42,8 @@ export class LoginPage extends AbstractPage {
   }
   async getValidUsernamePageText() {
     return await this.acceptedNamesText.innerText();
+  }
+  async isErrorVisible() {
+    return await this.errorText.isVisible();
   }
 }
