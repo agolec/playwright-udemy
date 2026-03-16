@@ -1,30 +1,31 @@
 {
-    "name": "udemy-playwright",
-    "version": "1.0.0",
-    "description": "Udemy Automated Software Testing with Playwright",
-    "main": "index.js",
-    "scripts": {
-        "tests:chrome": "playwright test --config=playwright.config.ts --project=Chromium",
-        "tests:firefox": "playwright test --config=playwright.config.ts --project=Firefox",
-        "tests:webkit": "playwright test --config=playwright.config.ts --project=Webkit",
-        "tests:e2e": "playwright test --config=end-to-end.config.ts --project=Chromium",
-        "tests:visual:firefox": "playwright test --config=visual.config.ts --project=Firefox",
-        "tests:visual:chromium": "playwright test --config=visual.config.ts --project=Chromium",
-        "tests:visual:webkit": "playwright test --config=visual.config.ts --project=Webkit",
-        "tests:visual:firefox:update": "playwright test --config=visual.config.ts --project=FireFox --update=snapshots",
-        "tests:visual:chromium:update": "playwright test --config=visual.config.ts --project=Chromium --update=snapshots",
-        "tests:visual:webkit:update": "playwright test --config=visual.config.ts --project=Webkit --update=snapshots",
-        "tests:api": "playwright test --config=api.config.ts --project=Chromium",
-        "jenkins-server": "java -jar jenkins.war --httpPort=8080 --enable-future-java"
-    },
-    "keywords": [
-        "Automation",
-        "Typescript"
-    ],
-    "author": "Adam Golec",
-    "license": "ISC",
-    "dependencies": {
-        "@playwright/test": "^1.32.3",
-        "prettier": "^2.8.7"
-    }
+  "name": "udemy-playwright",
+  "version": "1.0.0",
+  "description": "Udemy Automated Software Testing with Playwright",
+  "main": "index.js",
+  "scripts": {
+    "tests:chrome": "playwright test --config=playwright.config.ts --project=Chromium",
+    "tests:firefox": "playwright test --config=playwright.config.ts --project=Firefox",
+    "tests:webkit": "playwright test --config=playwright.config.ts --project=Webkit",
+    "tests:e2e": "playwright test --config=end-to-end.config.ts --project=Chromium",
+    "tests:visual:firefox": "playwright test --config=visual.config.ts --project=Firefox",
+    "tests:visual:chromium": "playwright test --config=visual.config.ts --project=Chromium",
+    "tests:visual:webkit": "playwright test --config=visual.config.ts --project=Webkit",
+    "tests:visual:firefox:update": "playwright test --config=visual.config.ts --project=FireFox --update=snapshots",
+    "tests:visual:chromium:update": "playwright test --config=visual.config.ts --project=Chromium --update=snapshots",
+    "tests:visual:webkit:update": "playwright test --config=visual.config.ts --project=Webkit --update=snapshots",
+    "tests:api": "playwright test --config=api.config.ts --project=Chromium",
+    "tests:e2e:swaglabs": "playwright test --config=swaglabs.config.ts --project=Chromium",
+    "jenkins-server": "java -jar jenkins.war --httpPort=8080 --enable-future-java"
+  },
+  "keywords": [
+    "Automation",
+    "Typescript"
+  ],
+  "author": "Adam Golec",
+  "license": "ISC",
+  "dependencies": {
+    "@playwright/test": "^1.32.3",
+    "prettier": "^2.8.7"
+  }
 }
