@@ -14,4 +14,24 @@ test.describe.parallel('login/logout', () => {
     console.log(text);
     //test.expect(loginPage.getValidUsernamePageText).toBe('');
   });
+
+  test('INVALID CREDENTIALS - WRONG PASSWORD - check for error window', async ({
+    page,
+  }) => {
+    await loginPage.typeUsername('lmao');
+    await loginPage.typePassword('secret_sauce');
+    await loginPage.clickLogin();
+    await expect(await loginPage.isErrorVisible()).toBe(true);
+  });
+
+  test('INVALID CREDENTIALS - wrong password SANITY CHECK - check for error window is false when it should be true', async ({
+    page,
+  }) => {
+    await loginPage.typeUsername('lmao');
+    await loginPage.typePassword('secret_sauce');
+    await loginPage.clickLogin();
+    //sanity checking. This test should be skipped or ran with the only tag for debugging. this is to make sure that the
+    //validation is actually working.
+    await expect(await loginPage.isErrorVisible()).toBe(false);
+  });
 });
