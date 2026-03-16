@@ -24,14 +24,16 @@ test.describe.parallel('login/logout', () => {
     await expect(await loginPage.isErrorVisible()).toBe(true);
   });
 
-  test('INVALID CREDENTIALS - wrong password SANITY CHECK - check for error window is false when it should be true', async ({
-    page,
-  }) => {
-    await loginPage.typeUsername('lmao');
-    await loginPage.typePassword('secret_sauce');
-    await loginPage.clickLogin();
-    //sanity checking. This test should be skipped or ran with the only tag for debugging. this is to make sure that the
-    //validation is actually working.
-    await expect(await loginPage.isErrorVisible()).toBe(false);
+  test.describe.skip('sanity checks', () => {
+    test('INVALID CREDENTIALS - wrong password SANITY CHECK - check for error window is false when it should be true', async ({
+      page,
+    }) => {
+      await loginPage.typeUsername('lmao');
+      await loginPage.typePassword('secret_sauce');
+      await loginPage.clickLogin();
+      //sanity checking. This test should be skipped or ran with the only tag for debugging. this is to make sure that the
+      //validation is actually working.
+      await expect(await loginPage.isErrorVisible()).toBe(false);
+    });
   });
 });
